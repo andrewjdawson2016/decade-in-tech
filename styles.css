@@ -11,13 +11,15 @@
   --rule: #e6ded2;
   --accent: #b0522f; /* terracotta */
 
-  /* Type — one serif family, hierarchy via size / weight / italic */
-  --font: "Fraunces", Georgia, "Times New Roman", serif;
+  /* Type — Newsreader, a warm upright serif, for both headings and text */
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-text: "Newsreader", Georgia, "Times New Roman", serif;
 
   /* Layout */
   --measure: 38rem; /* the reading column */
   --toc-width: 11rem;
   --toc-gap: 2.5rem; /* space between TOC and the reading column */
+  --rail-width: 12.5rem; /* right-hand rail: byline + disclosures */
 }
 
 * {
@@ -33,7 +35,7 @@ body {
   margin: 0;
   background-color: var(--paper);
   color: var(--ink);
-  font-family: var(--font);
+  font-family: var(--font-text);
   font-optical-sizing: auto;
   font-size: 1.1875rem;
   line-height: 1.72;
@@ -56,6 +58,7 @@ body {
 }
 
 .hero__title {
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(2.6rem, 8vw, 3.9rem);
   line-height: 1.04;
@@ -70,27 +73,195 @@ body {
   margin: 1.4rem 0 0;
 }
 
-.hero__byline {
+.rail__disclaimer {
+  font-size: 0.85rem;
+  line-height: 1.5;
   font-style: italic;
   color: var(--ink-faint);
+  margin: 1.25rem 0 0;
+}
+
+/* --------------------------------------------------- Right-hand rail ----- */
+
+.rail {
+  margin-top: 2.25rem;
+}
+
+.rail__byline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.byline__date {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+}
+
+/* Byline — name + LinkedIn icon behave as a single link. */
+.byline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-style: italic;
   font-size: 1rem;
-  margin: 1.6rem 0 0;
+  color: var(--ink-faint);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.byline:hover {
+  color: var(--accent);
+}
+
+.byline__icon {
+  display: inline-flex;
+}
+
+.byline__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* On wide screens the rail floats in the right margin, mirroring the TOC. */
+@media (min-width: 72rem) {
+  .rail {
+    position: fixed;
+    top: clamp(3rem, 8vw, 6rem);
+    left: calc(50% + (var(--measure) / 2) + var(--toc-gap));
+    width: var(--rail-width);
+    margin-top: 0;
+  }
+
+  .rail .disclosures {
+    margin-top: 1.5rem;
+  }
+
+  .rail .disclosure__summary {
+    font-size: 0.9rem;
+    padding: 0.55rem 0;
+    gap: 0.5rem;
+  }
+
+  .rail .disclosure__body {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding-left: 0.9rem;
+  }
+}
+
+/* ----------------------------------------------- Disclosure panels ------- */
+
+.disclosures {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.disclosure {
+  border-top: 1px solid var(--rule);
+}
+
+.disclosure:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.disclosure__summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.85rem 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 0.18s ease;
+}
+
+.disclosure__summary:hover {
+  color: var(--accent);
+}
+
+.disclosure__summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom rotating chevron. */
+.disclosure__summary::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+  flex: none;
+}
+
+.disclosure[open] .disclosure__summary::before {
+  transform: rotate(45deg);
+}
+
+.disclosure__body {
+  padding: 0 0 1rem 1.1rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.disclosure__body > * {
+  margin: 0 0 0.75rem;
+}
+
+.disclosure__body > *:last-child {
+  margin-bottom: 0;
+}
+
+.disclosure__body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 /* ------------------------------------------------------------ Sections --- */
 
 .section {
   scroll-margin-top: 2rem;
-  padding-top: clamp(2.75rem, 6vw, 3.75rem);
-  margin-top: clamp(2.75rem, 6vw, 3.75rem);
-  border-top: 1px solid var(--rule);
+  margin-top: clamp(3rem, 7vw, 4.5rem);
 }
 
 .section:first-child {
   margin-top: 0;
 }
 
+/* Section break — a pencil sketch sitting between the title and the intro. */
+.section__break {
+  margin: clamp(1.5rem, 4vw, 2.25rem) 0 clamp(2rem, 5vw, 3rem);
+}
+
+.section__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.section__number {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin: 0 0 0.6rem;
+}
+
 .section__title {
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(1.7rem, 4.5vw, 2.15rem);
   letter-spacing: -0.015em;
@@ -100,7 +271,8 @@ body {
 
 .section__intro {
   color: var(--ink-soft);
-  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.55;
   margin: 0.85rem 0 0;
 }
 
@@ -111,6 +283,7 @@ body {
 }
 
 .advice__title {
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.3rem;
   line-height: 1.3;
@@ -162,17 +335,6 @@ body {
   font-weight: 600;
 }
 
-/* -------------------------------------------------------------- Footer --- */
-
-.footer {
-  margin-top: clamp(3.5rem, 8vw, 5rem);
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--rule);
-  color: var(--ink-faint);
-  font-style: italic;
-  font-size: 0.95rem;
-}
-
 /* -------------------------------- Table of contents (floats in margin) --- */
 
 .toc {
@@ -208,6 +370,14 @@ body {
     color: var(--ink-faint);
     text-decoration: none;
     transition: color 0.18s ease;
+  }
+
+  .toc__num {
+    color: var(--accent);
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
   }
 
   .toc__link:hover {

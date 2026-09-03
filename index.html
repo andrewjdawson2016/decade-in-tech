@@ -9,11 +9,12 @@
       content="Principles and lessons from a decade in tech."
     />
 
-    <!-- Fonts: a single serif family (Fraunces) for a cohesive, literary feel -->
+    <!-- Font: Newsreader — a warm, upright literary serif used for both the
+         display headings and the reading text. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
       rel="stylesheet"
     />
 
@@ -27,15 +28,18 @@
       <header class="hero" id="top">
         <h1 class="hero__title" id="hero-title"></h1>
         <p class="hero__subtitle" id="hero-subtitle"></p>
-        <p class="hero__byline" id="hero-author"></p>
       </header>
+
+      <!-- Right-hand rail: byline, disclaimer + disclosures (floats in the right
+           margin on wide screens, sits inline under the hero on narrow ones). -->
+      <aside class="rail" id="rail">
+        <div class="rail__byline" id="hero-byline"></div>
+        <p class="rail__disclaimer" id="hero-disclaimer"></p>
+        <div class="disclosures" id="disclosures"></div>
+      </aside>
 
       <!-- Sections (populated by app.js) -->
       <div id="sections"></div>
-
-      <footer class="footer">
-        <p id="footer-text"></p>
-      </footer>
     </main>
 
     <script src="content.js"></script>

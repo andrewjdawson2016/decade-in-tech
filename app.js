@@ -6,6 +6,13 @@
 (function () {
   "use strict";
 
+  /* --- LinkedIn glyph (inline SVG so there's no extra network request) ----- */
+  var LINKEDIN_SVG =
+    '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" ' +
+    'aria-hidden="true" focusable="false">' +
+    '<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>' +
+    "</svg>";
+
   /* --- tiny inline formatter: **bold** *italic* `code` [text](url) --------- */
   function escapeHtml(str) {
     return str
@@ -71,11 +78,32 @@
     sec.id = section.id;
 
     const header = el("div", "section__header reveal");
+    header.appendChild(
+      el("span", "section__number", String(index + 1).padStart(2, "0"))
+    );
     header.appendChild(el("h2", "section__title", formatInline(section.title)));
-    if (section.intro) {
-      header.appendChild(el("p", "section__intro", formatInline(section.intro)));
-    }
     sec.appendChild(header);
+
+    // A pencil sketch just under the title is the section's visual break. Drop a
+    // file at images/<section.id>.png and it's stitched in automatically;
+    // sections without one simply omit it.
+    const brk = el("div", "section__break reveal");
+    const img = document.createElement("img");
+    img.className = "section__photo";
+    img.loading = "lazy";
+    img.alt = section.title;
+    img.src = "images/" + section.id + ".png";
+    img.addEventListener("error", function () {
+      brk.remove();
+    });
+    brk.appendChild(img);
+    sec.appendChild(brk);
+
+    if (section.intro) {
+      sec.appendChild(
+        el("p", "section__intro reveal", formatInline(section.intro))
+      );
+    }
 
     (section.advice || []).forEach((a) => sec.appendChild(renderAdvice(a)));
     return sec;
@@ -86,11 +114,15 @@
     const toc = document.getElementById("toc");
     toc.appendChild(el("p", "toc__label", "Contents"));
     const list = el("ul", "toc__list");
-    sections.forEach((section) => {
+    sections.forEach((section, i) => {
       const li = el("li");
-      const a = el("a", "toc__link", formatInline(section.title));
+      const a = el("a", "toc__link");
       a.href = "#" + section.id;
       a.dataset.target = section.id;
+      a.appendChild(
+        el("span", "toc__num", String(i + 1).padStart(2, "0"))
+      );
+      a.appendChild(el("span", "toc__text", formatInline(section.title)));
       li.appendChild(a);
       list.appendChild(li);
     });
@@ -152,9 +184,54 @@
     document.title = c.title;
     document.getElementById("hero-title").textContent = c.title;
     document.getElementById("hero-subtitle").textContent = c.subtitle || "";
-    document.getElementById("hero-author").textContent = c.author
-      ? "By " + c.author
-      : "";
+
+    // Employer disclaimer, shown just under the subtitle.
+    const heroDisclaimer = document.getElementById("hero-disclaimer");
+    if (c.disclaimer) {
+      heroDisclaimer.textContent = c.disclaimer;
+    } else {
+      heroDisclaimer.remove();
+    }
+
+    // Byline: the author name and LinkedIn icon act as a single link that
+    // shares one hover/click target.
+    const bylineRoot = document.getElementById("hero-byline");
+    if (c.author) {
+      const linked = Boolean(c.linkedin);
+      const byline = el(linked ? "a" : "span", "byline");
+      if (linked) {
+        byline.href = c.linkedin;
+        byline.target = "_blank";
+        byline.rel = "noopener";
+        byline.setAttribute("aria-label", c.author + " on LinkedIn");
+      }
+      byline.appendChild(el("span", "byline__name", c.author));
+      if (linked) {
+        byline.appendChild(el("span", "byline__icon", LINKEDIN_SVG));
+      }
+      bylineRoot.appendChild(byline);
+      if (c.date) {
+        bylineRoot.appendChild(el("span", "byline__date", c.date));
+      }
+    } else {
+      bylineRoot.remove();
+    }
+
+    // Collapsible disclosure panels (About me, Is this written by AI?, …).
+    const disclosuresRoot = document.getElementById("disclosures");
+    (c.disclosures || []).forEach((d) => {
+      const details = el("details", "disclosure");
+      const summary = el(
+        "summary",
+        "disclosure__summary",
+        formatInline(d.summary || "")
+      );
+      details.appendChild(summary);
+      const body = el("div", "disclosure__body");
+      (d.body || []).forEach((block) => body.appendChild(renderBlock(block)));
+      details.appendChild(body);
+      disclosuresRoot.appendChild(details);
+    });
 
     const sectionsRoot = document.getElementById("sections");
     (c.sections || []).forEach((section, i) =>
@@ -162,10 +239,6 @@
     );
 
     renderToc(c.sections || []);
-
-    const year = new Date().getFullYear();
-    document.getElementById("footer-text").textContent =
-      (c.author ? c.author + " · " : "") + year;
 
     initScrollSpy();
     initReveal();

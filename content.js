@@ -28,6 +28,19 @@
  *   Inside any string you can use light formatting:
  *     **bold**, *italic*, `code`, and [links](https://example.com)
  *
+ * HOW TO ADD A SECTION SKETCH (the image that opens each section):
+ *   1. Make a pencil sketch on a plain WHITE background (see the prompt tip
+ *      below) and save it as  sketches/<section-id>.png  — e.g. a section with
+ *      id "foundations" -> sketches/foundations.png.
+ *   2. Run:  python3 tools/prepare_sketches.py
+ *      This drops the white background out, tints the marks with the site ink,
+ *      and writes the transparent, page-ready image to images/<section-id>.png.
+ *   The site stitches images/<section-id>.png in automatically, just under that
+ *   section's title. No image yet? That section simply omits it.
+ *
+ *   Prompt tip for generating one: "a light, loose graphite PENCIL SKETCH of
+ *   <subject>, on a plain white background, no color, no border, centered."
+ *
  * That's it. Save the file and refresh the page.
  * ========================================================================== */
 
@@ -36,6 +49,33 @@ window.siteContent = {
   subtitle:
     "Principles, habits, and hard-won lessons collected over ten years of building software and working with people who build it.",
   author: "Andrew Dawson",
+
+  // Publish date — shown next to the author name in the byline.
+  date: "September 2026",
+
+  // Your LinkedIn profile — shown as an icon next to the byline.
+  linkedin: "https://www.linkedin.com/in/andrew-dawson-33680b73/",
+
+  // Shown as a small note under the subtitle AND in the footer.
+  disclaimer:
+    "All views and opinions expressed here are my own and do not necessarily reflect those of my employer.",
+
+  // Collapsible panels near the top of the page. Each has a `summary`
+  // (the clickable heading) and a `body` (same block format as advice).
+  disclosures: [
+    {
+      summary: "About me",
+      body: [
+        "I'm Andrew Dawson, a software engineer who has spent the last decade building software and working alongside the people who build it. This site is a running collection of the principles and lessons that stuck.",
+      ],
+    },
+    {
+      summary: "Is this written by AI?",
+      body: [
+        "The ideas, opinions, and lessons here are entirely my own — drawn from my own experience. I used AI as a writing assistant to help edit and structure the prose, but the thinking is mine.",
+      ],
+    },
+  ],
 
   sections: [
     {
