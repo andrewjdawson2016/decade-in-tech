@@ -70,6 +70,13 @@ window.siteContent = {
       ],
     },
     {
+      summary: "Why did I write this?",
+      body: [
+        "After ten years, I found myself giving the same advice over and over — to mentees, to teammates, to my past self. Writing it down was the only way to stop repeating myself and to see whether the lessons actually held together.",
+        "Mostly, though, this is for me: a chance to slow down and take stock of what a decade in tech actually taught me, before the details blur.",
+      ],
+    },
+    {
       summary: "Is this written by AI?",
       body: [
         "The ideas, opinions, and lessons here are entirely my own — drawn from my own experience. I used AI as a writing assistant to help edit and structure the prose, but the thinking is mine.",
