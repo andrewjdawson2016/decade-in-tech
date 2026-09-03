@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reflections on a decade in tech</title>
+    <meta
+      name="description"
+      content="Principles and lessons from a decade in tech."
+    />
+
+    <!-- Fonts: a single serif family (Fraunces) for a cohesive, literary feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Table of contents — floats in the left margin on wide screens -->
+    <nav class="toc" id="toc" aria-label="Sections"></nav>
+
+    <main class="page">
+      <header class="hero" id="top">
+        <h1 class="hero__title" id="hero-title"></h1>
+        <p class="hero__subtitle" id="hero-subtitle"></p>
+        <p class="hero__byline" id="hero-author"></p>
+      </header>
+
+      <!-- Sections (populated by app.js) -->
+      <div id="sections"></div>
+
+      <footer class="footer">
+        <p id="footer-text"></p>
+      </footer>
+    </main>
+
+    <script src="content.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

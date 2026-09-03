@@ -1,0 +1,234 @@
+/* ============================================================================
+ * styles.css — the design. Tweak the variables below to reskin the whole site.
+ * ========================================================================== */
+
+:root {
+  /* Palette — warm, editorial, calm */
+  --paper: #faf7f2;
+  --ink: #221e1a;
+  --ink-soft: #514a41;
+  --ink-faint: #948b7e;
+  --rule: #e6ded2;
+  --accent: #b0522f; /* terracotta */
+
+  /* Type — one serif family, hierarchy via size / weight / italic */
+  --font: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* Layout */
+  --measure: 38rem; /* the reading column */
+  --toc-width: 11rem;
+  --toc-gap: 2.5rem; /* space between TOC and the reading column */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-optical-sizing: auto;
+  font-size: 1.1875rem;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ------------------------------------------------- The reading column ---- */
+
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.4rem, 6vw, 2rem) 5rem;
+}
+
+/* ---------------------------------------------------------------- Hero --- */
+
+.hero {
+  margin-bottom: clamp(3rem, 8vw, 4.5rem);
+}
+
+.hero__title {
+  font-weight: 500;
+  font-size: clamp(2.6rem, 8vw, 3.9rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 1.4rem 0 0;
+}
+
+.hero__byline {
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: 1rem;
+  margin: 1.6rem 0 0;
+}
+
+/* ------------------------------------------------------------ Sections --- */
+
+.section {
+  scroll-margin-top: 2rem;
+  padding-top: clamp(2.75rem, 6vw, 3.75rem);
+  margin-top: clamp(2.75rem, 6vw, 3.75rem);
+  border-top: 1px solid var(--rule);
+}
+
+.section:first-child {
+  margin-top: 0;
+}
+
+.section__title {
+  font-weight: 500;
+  font-size: clamp(1.7rem, 4.5vw, 2.15rem);
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  margin: 0;
+}
+
+.section__intro {
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0.85rem 0 0;
+}
+
+/* -------------------------------------------------------------- Advice --- */
+
+.advice {
+  margin-top: 2.5rem;
+}
+
+.advice__title {
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  margin: 0 0 0.5rem;
+}
+
+.advice__body > * {
+  margin: 0 0 0.85rem;
+  color: var(--ink-soft);
+}
+
+.advice__body > *:last-child {
+  margin-bottom: 0;
+}
+
+.advice__body ul,
+.advice__body ol {
+  padding-left: 1.2rem;
+  margin: 0 0 0.85rem;
+}
+
+.advice__body li {
+  margin-bottom: 0.35rem;
+  padding-left: 0.2rem;
+}
+
+.advice__body li::marker {
+  color: var(--accent);
+}
+
+.advice__body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.advice__body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  background: #f0e7db;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+.advice__body strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------- Footer --- */
+
+.footer {
+  margin-top: clamp(3.5rem, 8vw, 5rem);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-faint);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* -------------------------------- Table of contents (floats in margin) --- */
+
+.toc {
+  display: none;
+}
+
+/* Only show the floating TOC when there's room for it beside the column. */
+@media (min-width: 64rem) {
+  .toc {
+    display: block;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Sit just left of the centered reading column. */
+    left: calc(50% - (var(--measure) / 2) - var(--toc-gap) - var(--toc-width));
+    width: var(--toc-width);
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .toc__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .toc__link {
+    display: block;
+    padding: 0.3rem 0;
+    color: var(--ink-faint);
+    text-decoration: none;
+    transition: color 0.18s ease;
+  }
+
+  .toc__link:hover {
+    color: var(--ink);
+  }
+
+  .toc__link.is-active {
+    color: var(--accent);
+  }
+}
+
+/* ------------------------------------------------- Entrance animation ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
