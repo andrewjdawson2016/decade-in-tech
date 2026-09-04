@@ -47,39 +47,33 @@
 window.siteContent = {
   title: "Reflections on a decade in tech",
   subtitle:
-    "Principles, habits, and hard-won lessons collected over ten years of building software and working with people who build it.",
+    "In January 2027 my tech career turns one decade old, which felt like a good milestone to step back and summarize the things I've learnt.",
   author: "Andrew Dawson",
-
-  // Publish date — shown next to the author name in the byline.
   date: "September 2026",
-
-  // Your LinkedIn profile — shown as an icon next to the byline.
   linkedin: "https://www.linkedin.com/in/andrew-dawson-33680b73/",
-
-  // Shown as a small note under the subtitle AND in the footer.
   disclaimer:
     "All views and opinions expressed here are my own and do not necessarily reflect those of my employer.",
-
-  // Collapsible panels near the top of the page. Each has a `summary`
-  // (the clickable heading) and a `body` (same block format as advice).
   disclosures: [
     {
       summary: "About me",
       body: [
-        "I'm Andrew Dawson, a software engineer who has spent the last decade building software and working alongside the people who build it. This site is a running collection of the principles and lessons that stuck.",
+        "My name is Andrew Dawson. I am a staff engineer at Stripe working on the database infrastructure team.",
+        "These days I mainly focus on the foundational sharding abstractions that determine how API requests get distributed over Stripe's database fleet.",
+        "Outside of work I like walks, podcasts, chess and trying to improve my mile time at Orange Theory Fitness."
       ],
     },
     {
       summary: "Why did I write this?",
       body: [
-        "After ten years, I found myself giving the same advice over and over — to mentees, to teammates, to my past self. Writing it down was the only way to stop repeating myself and to see whether the lessons actually held together.",
-        "Mostly, though, this is for me: a chance to slow down and take stock of what a decade in tech actually taught me, before the details blur.",
+        "Primarily I am writing this for myself as a forcing function to reflect on (and durably capture) the things I've learnt over my time in tech.",       
+        "Secondarily, I have been privileged with great mentors who took the time to invest in my growth, and as such I feel a sort of obligation to pay it forward by sharing the things I've learnt."
       ],
     },
     {
       summary: "Is this written by AI?",
       body: [
-        "The ideas, opinions, and lessons here are entirely my own — drawn from my own experience. I used AI as a writing assistant to help edit and structure the prose, but the thinking is mine.",
+        "This is not written with AI and nothing meaningful I write is. I use AI as a research assistant, grammar checker and to write code, but I think writing should be left to us humans.",
+        "I find that the painstaking process of writing exposes gaps in my thinking that using LLMs to write cannot replicate. I also agree with [Marc Brooker's take that using LLMs in writing breaks a sort of social contract](https://brooker.co.za/blog/2026/06/18/my-blog-and-ai.html)."
       ],
     },
   ],
