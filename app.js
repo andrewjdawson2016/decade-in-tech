@@ -240,6 +240,9 @@
     const disclosuresRoot = document.getElementById("disclosures");
     (c.disclosures || []).forEach((d) => {
       const details = el("details", "disclosure");
+      // Shared name = native accordion: opening one panel closes the others,
+      // which keeps the fixed rail from outgrowing the viewport.
+      details.name = "disclosure";
       const summary = el(
         "summary",
         "disclosure__summary",

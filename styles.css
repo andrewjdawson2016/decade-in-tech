@@ -171,6 +171,14 @@ body {
     left: calc(50% + (var(--measure) / 2) + var(--toc-gap));
     width: var(--rail-width);
     margin: 0;
+    /* The rail is pinned to the viewport, so anything past the bottom edge
+       would otherwise be unreachable — cap it and scroll internally. */
+    max-height: calc(100vh - clamp(3rem, 8vw, 6rem) - 2rem);
+    max-height: calc(100dvh - clamp(3rem, 8vw, 6rem) - 2rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule) transparent;
   }
 
   .rail .disclosures {
