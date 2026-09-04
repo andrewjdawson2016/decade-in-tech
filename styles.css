@@ -27,8 +27,33 @@
 }
 
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
   scroll-padding-top: 2rem;
+}
+
+::selection {
+  background: rgba(176, 82, 47, 0.18);
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Keep headings from wrapping awkwardly and tidy paragraph rags where the
+   browser supports it; both degrade silently where it doesn't. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
 }
 
 body {
@@ -55,6 +80,17 @@ body {
 
 .hero {
   margin-bottom: clamp(3rem, 8vw, 4.5rem);
+}
+
+/* A small masthead mark above the title — quietly signals "this is the cover". */
+.hero::before {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+  margin-bottom: clamp(1.75rem, 5vw, 2.5rem);
 }
 
 .hero__title {
@@ -84,7 +120,9 @@ body {
 /* --------------------------------------------------- Right-hand rail ----- */
 
 .rail {
-  margin-top: 2.25rem;
+  /* Inline (narrow-screen) placement: sits between the hero and the first
+     section, so it needs breathing room on both sides. */
+  margin: 2.25rem 0 clamp(3.5rem, 9vw, 4.5rem);
 }
 
 .rail__byline {
@@ -132,7 +170,7 @@ body {
     top: clamp(3rem, 8vw, 6rem);
     left: calc(50% + (var(--measure) / 2) + var(--toc-gap));
     width: var(--rail-width);
-    margin-top: 0;
+    margin: 0;
   }
 
   .rail .disclosures {
@@ -226,13 +264,30 @@ body {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
+  text-decoration-color: rgba(176, 82, 47, 0.45);
+  transition: text-decoration-color 0.18s ease;
+}
+
+.disclosure__body a:hover {
+  text-decoration-color: currentColor;
 }
 
 /* ------------------------------------------------------------ Sections --- */
 
 .section {
   scroll-margin-top: 2rem;
-  margin-top: clamp(3rem, 7vw, 4.5rem);
+  margin-top: clamp(3.25rem, 7vw, 4.25rem);
+}
+
+/* A quiet centered divider marks the boundary between sections, so the
+   between-section rhythm clearly outranks the within-section rhythm. */
+.section:not(:first-child)::before {
+  content: "· · ·";
+  display: block;
+  text-align: center;
+  color: var(--ink-faint);
+  letter-spacing: 0.5em;
+  margin-bottom: clamp(3.25rem, 7vw, 4.25rem);
 }
 
 .section:first-child {
@@ -320,6 +375,12 @@ body {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
+  text-decoration-color: rgba(176, 82, 47, 0.45);
+  transition: text-decoration-color 0.18s ease;
+}
+
+.advice__body a:hover {
+  text-decoration-color: currentColor;
 }
 
 .advice__body code {
@@ -353,6 +414,15 @@ body {
     width: var(--toc-width);
     font-size: 0.9rem;
     line-height: 1.4;
+  }
+
+  .toc__label {
+    margin: 0 0 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
   }
 
   .toc__list {
@@ -389,6 +459,30 @@ body {
   }
 }
 
+/* -------------------------------------------------------------- Footer --- */
+
+/* Closes the essay: an asterism echoing the section dividers, then a short
+   colophon line. Without it the page just stops mid-thought. */
+.footer {
+  margin-top: clamp(4.5rem, 10vw, 6rem);
+  text-align: center;
+}
+
+.footer__mark {
+  margin: 0;
+  color: var(--ink-faint);
+  letter-spacing: 0.5em;
+  /* Optically center: letter-spacing trails the last glyph. */
+  padding-left: 0.5em;
+}
+
+.footer__note {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+  margin: 1.5rem 0 0;
+}
+
 /* ------------------------------------------------- Entrance animation ---- */
 
 @media (prefers-reduced-motion: no-preference) {
@@ -400,5 +494,29 @@ body {
   .reveal.is-visible {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* --------------------------------------------------------------- Print --- */
+
+@media print {
+  .toc {
+    display: none;
+  }
+
+  .rail {
+    position: static;
+    width: auto;
+    margin: 2rem 0 3rem;
+  }
+
+  /* Everything visible regardless of how far the reader had scrolled. */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  body {
+    background: #fff;
   }
 }

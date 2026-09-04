@@ -13,6 +13,23 @@
     '<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>' +
     "</svg>";
 
+  /* --- typographic quotes: straight ' and " become curly ------------------- */
+  function smarten(str) {
+    return str
+      .replace(/(^|[\s(\[{—-])"/g, "$1“") // opening double
+      .replace(/"/g, "”") // closing double
+      .replace(/(^|[\s(\[{—-])'/g, "$1‘") // opening single
+      .replace(/'/g, "’"); // apostrophes + closing single
+  }
+
+  /* Smarten quotes everywhere except inside `code` spans. */
+  function smartenOutsideCode(str) {
+    return str
+      .split(/(`[^`]+`)/)
+      .map((part, i) => (i % 2 ? part : smarten(part)))
+      .join("");
+  }
+
   /* --- tiny inline formatter: **bold** *italic* `code` [text](url) --------- */
   function escapeHtml(str) {
     return str
@@ -22,7 +39,7 @@
   }
 
   function formatInline(str) {
-    let s = escapeHtml(str);
+    let s = escapeHtml(smartenOutsideCode(str));
     s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
     s = s.replace(
       /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
@@ -182,13 +199,15 @@
     }
 
     document.title = c.title;
-    document.getElementById("hero-title").textContent = c.title;
-    document.getElementById("hero-subtitle").textContent = c.subtitle || "";
+    document.getElementById("hero-title").textContent = smarten(c.title);
+    document.getElementById("hero-subtitle").textContent = smarten(
+      c.subtitle || ""
+    );
 
     // Employer disclaimer, shown just under the subtitle.
     const heroDisclaimer = document.getElementById("hero-disclaimer");
     if (c.disclaimer) {
-      heroDisclaimer.textContent = c.disclaimer;
+      heroDisclaimer.textContent = smarten(c.disclaimer);
     } else {
       heroDisclaimer.remove();
     }
@@ -239,6 +258,15 @@
     );
 
     renderToc(c.sections || []);
+
+    // Footer: an end mark plus a short colophon closes the essay.
+    const footer = document.getElementById("footer");
+    footer.classList.add("reveal");
+    footer.appendChild(el("p", "footer__mark", "· · ·"));
+    const colophon = [c.author, c.date].filter(Boolean).join(" · ");
+    if (colophon) {
+      footer.appendChild(el("p", "footer__note", escapeHtml(colophon)));
+    }
 
     initScrollSpy();
     initReveal();

@@ -29,6 +29,12 @@ INK = (34, 30, 26)
 # Keeps the background perfectly clean instead of leaving a faint haze.
 PAPER_CUTOFF = 246
 
+# Sketches usually arrive with wide empty margins; those become dead vertical
+# space on the page. Marks with alpha >= TRIM_THRESHOLD define the content box,
+# which is then kept with TRIM_PADDING pixels of breathing room.
+TRIM_THRESHOLD = 12
+TRIM_PADDING = 16
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_DIR = os.path.join(ROOT, "sketches")
 OUT_DIR = os.path.join(ROOT, "images")
@@ -49,6 +55,20 @@ def convert(src_path, out_path):
 
     out = Image.new("RGBA", gray.size, INK + (0,))
     out.putalpha(alpha)
+
+    # Trim the empty margins so the image is only as tall as the drawing.
+    bbox = alpha.point(lambda a: 255 if a >= TRIM_THRESHOLD else 0).getbbox()
+    if bbox:
+        left, top, right, bottom = bbox
+        out = out.crop(
+            (
+                max(0, left - TRIM_PADDING),
+                max(0, top - TRIM_PADDING),
+                min(out.width, right + TRIM_PADDING),
+                min(out.height, bottom + TRIM_PADDING),
+            )
+        )
+
     out.save(out_path)
     print(f"  {os.path.relpath(src_path, ROOT)} -> {os.path.relpath(out_path, ROOT)}")
 
