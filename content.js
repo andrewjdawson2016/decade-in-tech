@@ -83,24 +83,62 @@ window.siteContent = {
       id: "foundations",
       title: "Foundations",
       intro:
-        "The bedrock. These are the things that hold everything else up — how you treat your body, your mind, and your time before any code gets written.",
+        "Fair warning - this first section (and much of the next section) gives general life advice that is not at all specific to building a career in tech. If you want to jump to the more tech-y advice, skip the first two sections. Having said that, I do believe the \"common sense\" advice in these first two sections is the most important in this post.",
       advice: [
         {
-          title: "Get good sleep",
+          title: "Get Good Sleep",
           body: [
-            "Sleep is the highest-leverage investment you can make in your work. A rested mind debugs faster, designs better, and is far kinder to the people around it.",
-            "When you are tempted to trade sleep for a few more hours of output, remember that tired work is usually work you'll redo tomorrow.",
+            "Getting quality sleep is the best thing you can do for your performance. I have struggled with bouts of insomnia which prompted me to dive deep into practices to improve sleep quality. I am now religious about my sleep hygiene, and for the most part get great sleep.",
+            {
+              list: [
+                "Wake up at exactly the same time each day, even on weekends.",
+                "Get morning light in your eyes within 30 minutes of waking up, and if it's too dark when you wake up to do that, use a 10,000 lux lamp for 20 minutes.",
+                "Don't drink caffeine after 11am and keep total intake low.",
+                "Drinking alcohol, eating junk food, and not exercising are all bad for your sleep.",
+                "Avoid eating close to bedtime - aim to have at least 3 hours between your last bite and bed.",
+                "Consistent bedtime matters less than wake-up time, but stick to a bedtime wind-down routine that includes no screens for at least 60 minutes before bed and low-stimulation activities.",
+                "Sleep in a cold, dark and quiet room.",
+                "A night mask is a great investment (Whoop makes a great one).",
+                "Train your brain that bed means sleep. This means only using your bed for sleeping, and if you cannot sleep after 20 minutes, getting out of bed until you are ready to try again.",
+                "Cognitive Behavioral Therapy for Insomnia (CBT-I) is the most effective long-term treatment for insomnia.",
+              ],
+            },
           ],
         },
         {
-          title: "Optimize for the long game",
+          title: "Exercise Nearly Daily",
           body: [
-            "Careers are measured in decades, not sprints. The compounding returns come from consistency, reputation, and relationships — none of which can be crammed.",
+            "After getting quality sleep, exercise is the best thing you can do for your brain - prioritize it!",
             {
               list: [
-                "Protect your health before it becomes a problem.",
-                "Keep your commitments small enough that you can always keep them.",
-                "Choose environments where you'll still be learning in three years.",
+                "Exercise improves memory, reduces stress and improves critical thinking. Your brain is way more effective when exercise is a part of your daily routine.",
+                "Prioritize a consistent routine you can stick with for years.",
+                "Treat your daily exercise like your most critical meeting of the day; the improved cognitive abilities resulting from exercise outweigh the productivity gains of an extra hour of work.",
+              ],
+            },
+          ],
+        },
+        {
+          title: "Be Systems Driven",
+          body: [
+            {
+              list: [
+                "Have some system by which you keep track of the top 1-3 most important things to do on a daily basis, weekly basis, and quarterly basis. Daily should level up to weekly goals and weekly should level up to quarterly goals. Have some form of accountability to make sure you are looking at these goals, reflecting and making adjustments. I have found the [Full Focus Daily Planner](https://www.amazon.com/Full-Focus-Planner-Michael-Hyatt/dp/1732189692/ref=sr_1_1_sspa?crid=1I3XON84TAU0K&dib=eyJ2IjoiMSJ9.D-_7LtMpes1iLgGFm4X_kdjs4oetZaxHgUepgQMAfCb1akkkaGoiDpH5Mgk43jD7LCZ3jT0aHKoBhx01-VJ8U01A8PzQW3dvG4r2e14AZ3opewvD63HkzEDNcGCc4L8JUYiNE6Y78dWKsiajLKPQh1XBEVTrPzltrX4cSLPohihJ13mQse8AfipRAHkyKtOG4_YOJf8BX-3Rbda9Wlji5ZLOObosc3fHVY1ZPvmvtQpYOf3ggBM4V00kdk59mHBEGGbudG5dTvq0SB0U0x4A9noSJTvHBAkAFx2M1lGDCUY.lkzIH6ZmQNL3mVPZ5-SQhV6x8a4bubJ-ymSC-oQBAfs&dib_tag=se&keywords=full%2Bfocus%2Bplanner&qid=1788562349&sprefix=full%2Bfocus%2Bplann%2Caps%2C196&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1) to be gold here.", 
+                "Working on the right thing is higher leverage than just working harder, so make space for yourself to reflect on what you should be working on - journaling is a great tool here.",
+                "Be intentional about how you want to distribute your time. Designing an ideal week and then building your schedule around that ideal week is a good tool here.",
+                "Read the book [Atomic Habits](https://www.amazon.com/Atomic-Habits-James-Clear-audiobook/dp/B07RFSSYBH/ref=sr_1_1?crid=Y7V4QJVFGK5Y&dib=eyJ2IjoiMSJ9.aVjxsZgNHJ6wfgiZ01PPLLnBbPwFBhKA8deJ-gb2I-eanpElMyoIEvwmp3Sui5iftBHGHC85Pjxr70kgIT2564AjHtM2bplPpxTAhLMPIeezd1qewaLPcqk0jNwemJ0dM2NwCrSyv8h52Pnwx8jvo2WRhBjyHs77O1yzGGX1_fwNocoW-EAHvLsv-xNhRX4CtHZNcDTP7ANR0N8ngfKLOGUkNrQmp6xUQI5fia7paQk.ZlvaS-8NfKP0ivALC1kvhlCsU5gPX9PpruBHPRmci4E&dib_tag=se&keywords=atomic+habits&qid=1788562447&sprefix=atomic+habit%2Caps%2C192&sr=8-1), then follow the core principles such as habit stacking to build chains of habits, using small daily habits as leverage to extend/build habits, using cues/rewards to enforce habits etc… Small daily habits stacked together create huge changes.",
+              ],
+            },
+          ],
+        },
+        {
+          title: "Learn by Doing Hard Things",
+          body: [
+            {
+              list: [
+                "Learn by searching for and then diving into tasks that are at the edge of your ability and that have a clear way to measure success. Run a loop - what blind spots do I have, what hard problem can I take on in those blind spots, was I successful? Why or why not?",
+                "It is easy to trick yourself into thinking you understand something after passively consuming it (e.g., reading a document). Figure out some way to test yourself on the material to really engage with it. For example, if you are reading a design document, read the problem statement section and then spend a half hour thinking about how you would solve the problem before reading the document. Then after reading the document have an internal debate with yourself on which approach is better and weigh the tradeoffs. You will remember the document so much better and provide better feedback.",
+                "It is hard to remember random facts; it is easier to remember facts that connect to a mental model you deeply understand. Somewhat counter-intuitively, remembering relationships between concepts is easier than remembering isolated facts even though it is on net more total information - the chess grandmaster remembers where pieces are on a chess board not because they have a better general memory but because they have such rich mental models for how the pieces relate to each other.",
               ],
             },
           ],
