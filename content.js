@@ -77,7 +77,7 @@ window.siteContent = {
       ],
     },
     {
-      summary: "Are the links affiliate marketing?",
+      summary: "Are these affiliate links?",
       body: [
         "Absolutely not; I have no desire to make money from this post."
       ]
