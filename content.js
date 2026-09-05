@@ -47,7 +47,7 @@
 window.siteContent = {
   title: "Reflections on a decade in tech",
   subtitle:
-    "In January 2027 my tech career turns one decade old, which felt like a good milestone to step back and summarize the things I've learnt.",
+    "In January 2027 my tech career turns one decade old, which felt like a good milestone to step back and summarize the things I’ve learnt.",
   author: "Andrew Dawson",
   date: "September 2026",
   linkedin: "https://www.linkedin.com/in/andrew-dawson-33680b73/",
@@ -66,7 +66,7 @@ window.siteContent = {
       summary: "Why did I write this?",
       body: [
         "Primarily I am writing this for myself as a forcing function to reflect on (and durably capture) the things I've learnt over my time in tech.",       
-        "Secondarily, I have been privileged with great mentors who took the time to invest in my growth, and as such I feel a sort of obligation to pay it forward by sharing the things I've learnt."
+        "Secondarily, I've been lucky to have mentors and managers who invested in my growth and pushed me beyond what I felt ready for - now I want to pay that forward."
       ],
     },
     {
@@ -76,6 +76,12 @@ window.siteContent = {
         "I find that the painstaking process of writing exposes gaps in my thinking that using LLMs to write cannot replicate. I also agree with [Marc Brooker's take that using LLMs in writing breaks a sort of social contract](https://brooker.co.za/blog/2026/06/18/my-blog-and-ai.html)."
       ],
     },
+    {
+      summary: "Are the links affiliate marketing?"
+      body: [
+        "Absolutely not; I have no desire to make money from this post."
+      ]
+    }
   ],
 
   sections: [
@@ -98,7 +104,7 @@ window.siteContent = {
                 "Avoid eating close to bedtime - aim to have at least 3 hours between your last bite and bed.",
                 "Consistent bedtime matters less than wake-up time, but stick to a bedtime wind-down routine that includes no screens for at least 60 minutes before bed and low-stimulation activities.",
                 "Sleep in a cold, dark and quiet room.",
-                "A night mask is a great investment (Whoop makes a great one).",
+                "A night mask is a great investment ([Whoop](https://www.whoop.com/us/en/) makes a great one).",
                 "Train your brain that bed means sleep. This means only using your bed for sleeping, and if you cannot sleep after 20 minutes, getting out of bed until you are ready to try again.",
                 "Cognitive Behavioral Therapy for Insomnia (CBT-I) is the most effective long-term treatment for insomnia.",
               ],
@@ -123,10 +129,10 @@ window.siteContent = {
           body: [
             {
               list: [
-                "Have some system by which you keep track of the top 1-3 most important things to do on a daily basis, weekly basis, and quarterly basis. Daily should level up to weekly goals and weekly should level up to quarterly goals. Have some form of accountability to make sure you are looking at these goals, reflecting and making adjustments. I have found the [Full Focus Daily Planner](https://www.amazon.com/Full-Focus-Planner-Michael-Hyatt/dp/1732189692/ref=sr_1_1_sspa?crid=1I3XON84TAU0K&dib=eyJ2IjoiMSJ9.D-_7LtMpes1iLgGFm4X_kdjs4oetZaxHgUepgQMAfCb1akkkaGoiDpH5Mgk43jD7LCZ3jT0aHKoBhx01-VJ8U01A8PzQW3dvG4r2e14AZ3opewvD63HkzEDNcGCc4L8JUYiNE6Y78dWKsiajLKPQh1XBEVTrPzltrX4cSLPohihJ13mQse8AfipRAHkyKtOG4_YOJf8BX-3Rbda9Wlji5ZLOObosc3fHVY1ZPvmvtQpYOf3ggBM4V00kdk59mHBEGGbudG5dTvq0SB0U0x4A9noSJTvHBAkAFx2M1lGDCUY.lkzIH6ZmQNL3mVPZ5-SQhV6x8a4bubJ-ymSC-oQBAfs&dib_tag=se&keywords=full%2Bfocus%2Bplanner&qid=1788562349&sprefix=full%2Bfocus%2Bplann%2Caps%2C196&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1) to be gold here.", 
+                "Have some system by which you keep track of the top 1-3 most important things to do on a daily basis, weekly basis, and quarterly basis. Daily should level up to weekly goals and weekly should level up to quarterly goals. Have some form of accountability to make sure you are looking at these goals, reflecting and making adjustments. I have found the [Full Focus Daily Planner](https://fullfocusstore.com/products/full-focus-planner-linen) to be gold here.", 
                 "Working on the right thing is higher leverage than just working harder, so make space for yourself to reflect on what you should be working on - journaling is a great tool here.",
                 "Be intentional about how you want to distribute your time. Designing an ideal week and then building your schedule around that ideal week is a good tool here.",
-                "Read the book [Atomic Habits](https://www.amazon.com/Atomic-Habits-James-Clear-audiobook/dp/B07RFSSYBH/ref=sr_1_1?crid=Y7V4QJVFGK5Y&dib=eyJ2IjoiMSJ9.aVjxsZgNHJ6wfgiZ01PPLLnBbPwFBhKA8deJ-gb2I-eanpElMyoIEvwmp3Sui5iftBHGHC85Pjxr70kgIT2564AjHtM2bplPpxTAhLMPIeezd1qewaLPcqk0jNwemJ0dM2NwCrSyv8h52Pnwx8jvo2WRhBjyHs77O1yzGGX1_fwNocoW-EAHvLsv-xNhRX4CtHZNcDTP7ANR0N8ngfKLOGUkNrQmp6xUQI5fia7paQk.ZlvaS-8NfKP0ivALC1kvhlCsU5gPX9PpruBHPRmci4E&dib_tag=se&keywords=atomic+habits&qid=1788562447&sprefix=atomic+habit%2Caps%2C192&sr=8-1), then follow the core principles such as habit stacking to build chains of habits, using small daily habits as leverage to extend/build habits, using cues/rewards to enforce habits etc… Small daily habits stacked together create huge changes.",
+                "Read the book [Atomic Habits](https://www.goodreads.com/en/book/show/40121378-atomic-habits), then follow the core principles such as habit stacking to build chains of habits, using small daily habits as leverage to extend/build habits, using cues/rewards to enforce habits etc… Small daily habits stacked together create huge changes.",
               ],
             },
           ],
