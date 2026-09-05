@@ -59,7 +59,7 @@ window.siteContent = {
       body: [
         "My name is Andrew Dawson. I am a staff engineer at Stripe working on the database infrastructure team.",
         "These days I mainly focus on the foundational sharding abstractions that determine how API requests get distributed over Stripe's database fleet.",
-        "Outside of work I like walks, podcasts, chess and trying to improve my mile time at Orange Theory Fitness."
+        "Outside of work I like walks, podcasts, chess and trying to improve my mile time at Orangetheory Fitness."
       ],
     },
     {
@@ -77,7 +77,7 @@ window.siteContent = {
       ],
     },
     {
-      summary: "Are the links affiliate marketing?"
+      summary: "Are the links affiliate marketing?",
       body: [
         "Absolutely not; I have no desire to make money from this post."
       ]
