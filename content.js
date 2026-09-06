@@ -153,16 +153,35 @@ window.siteContent = {
     },
 
     {
-      id: "work-basics",
-      title: "Work Basics",
+      id: "work-principles",
+      title: "Work Principles",
       intro:
-        "The everyday craft of being effective — how you communicate, prioritize, and turn ambiguity into shipped work.",
+        "This section outlines my core work principles - akin to company principles such as [Amazon's Leadership Principles](https://www.amazon.jobs/content/en/our-workplace/leadership-principles) and [Stripe's Operating Principles](https://stripe.com/careers/compatibility).",
       advice: [
         {
-          title: "Write things down",
+          title: "Deliver User Impact",
           body: [
-            "The act of writing forces clarity. If you can't explain it in a short document, you probably don't understand it yet.",
-            "Written decisions also scale: they answer the same question for the next ten people without you in the room.",
+            "Delivering positive user impact is the whole name of the game. Teams, workstreams and companies survive, thrive or die based on their ability to deliver value to users. Value is delivered by working on the right problems, executing effectively and taking end-to-end ownership.",
+
+            "If you aren't solving a problem that matters to users, you aren't going to deliver value. Here are some tips to make sure you are solving the right problem:",
+            {
+              list: [
+                "Talk to users - this is the most key thing. But don't blindly treat user requests as feature specs - users can provide valuable input on the problems they are struggling with, and that should be taken as an input to determine what solutions should be prioritized.",
+                "Pressure test the value of the work you are doing by asking yourself \"What would happen to users if we canceled this project?\", \"Why is this the thing we should prioritize now over everything else we could be doing?\" and \"How would I explain to the CEO of the company why this work is important?\"",
+                "Often at large companies you will have to recurse through many layers of \"users\" to reach an end user of your company. It is important to be able to explain the value of your work to users at different vantage points. You probably should spend most of your time working with your direct users, but keep in mind your user's user, and the \"user\" paying your company money.",
+              ],
+            },
+
+            "Once you are solving the right problem, you need to execute on it effectively to deliver value to your users.",
+            {
+              list: [
+                "Frequently delivering value is the lifeblood of a workstream; it keeps users invested and motivates contributors. Really strive to figure out how to deliver frequent incremental value to users no matter how large the project.",
+                "Ensure your short-term deliverables are directionally aligned with a longer-term vision. Otherwise you will thrash in place without delivering sustained user value. You don't need to build perfectly linearly towards some north star, but you need to deliver incremental value that is at least on the arc of a larger vision.",
+                "Nothing has actually shipped until a user problem has been solved. A key part of the job is making the impact visible to users, helping them be successful and showing the impact off to the folks providing funding for your work so that they keep funding it.",
+              ],
+            },
+
+            "The work does not stop when you send a press announcement for your work. You need to assume an attitude of end-to-end ownership. Work with your customers to make them successful, jump into incidents if there are problems and learn from your customers to iteratively deliver more value. The work never ends. One of the best compliments you can get from users is a long list of demands - that means they are using your product enough to care and they want it to be better. If you are delivering impact to users your reward is the opportunity to deliver more impact.",
           ],
         },
         {
